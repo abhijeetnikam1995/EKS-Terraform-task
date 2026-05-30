@@ -10,6 +10,14 @@ terraform {
   }
 }
 
+  backend "s3" {
+    bucket = "terraform-demo-for-eks1"
+    key    = "dev/eks-cluster/terraform.tfstate"
+    region = "us-east-1" 
+ 
+    # For State Locking
+    dynamodb_table = "dev-ekscluster"    
+  }  
 # Terraform Provider Block
 provider "aws" {
   region = var.aws_region

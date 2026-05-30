@@ -28,3 +28,13 @@ resource "aws_iam_role_policy_attachment" "eks-AmazonEC2ContainerRegistryReadOnl
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.eks_nodegroup_role.name
 }
+
+resource "aws_iam_role_policy_attachment" "eks-CloudWatchAgentServerPolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+  role       = aws_iam_role.eks_nodegroup_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "eks-AWSXrayWriteOnlyAccess" {
+  policy_arn = "arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess"
+  role       = aws_iam_role.eks_nodegroup_role.name
+}

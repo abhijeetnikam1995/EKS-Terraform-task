@@ -88,3 +88,14 @@ output "node_group_private_version" {
 }
 
 */
+
+# CloudWatch Monitoring Outputs
+output "eks_cluster_cloudwatch_log_group_name" {
+  description = "CloudWatch Logs log group used for EKS control plane logs."
+  value       = aws_cloudwatch_log_group.eks_cluster.name
+}
+
+output "eks_cloudwatch_observability_addon_arn" {
+  description = "ARN of the Amazon CloudWatch Observability EKS add-on when enabled."
+  value       = try(aws_eks_addon.cloudwatch_observability[0].arn, null)
+}

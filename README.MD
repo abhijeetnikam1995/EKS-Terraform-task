@@ -19,6 +19,14 @@ Install and configure the following tools before running Terraform:
 3. `kubectl` for connecting to the EKS cluster after deployment.
 4. An AWS account with enough service quotas for VPCs, Elastic IPs, NAT gateways, EKS clusters, and EC2 instances.
 
+Login to awscli using below command
+
+```bash
+export AWS_ACCESS_KEY_ID="put access key"
+export AWS_SECRET_ACCESS_KEY="put secret key"
+export AWS_DEFAULT_REGION="us-east-1"
+```
+
 Verify your AWS identity:
 
 ```bash
@@ -116,11 +124,6 @@ Run:
 aws eks update-kubeconfig --region us-east-1 --name hr-stag-eksdemo1
 ```
 
-If you changed the variable values, use this naming pattern instead:
-
-```bash
-aws eks update-kubeconfig --region <aws_region> --name <business_divsion>-<environment>-<cluster_name>
-```
 
 ### 8. Verify the Cluster
 
@@ -148,7 +151,6 @@ ssh -i private-key/eks-terraform-key.pem ec2-user@<bastion_public_ip>
 
 ## Destroy Steps
 
-When finished, destroy all resources to avoid ongoing AWS charges.
 
 ```bash
 terraform destroy
@@ -191,7 +193,3 @@ aws eks describe-cluster --region us-east-1 --name hr-stag-eksdemo1 --query 'clu
 ```bash
 chmod 400 private-key/eks-terraform-key.pem
 ```
-
-## Important Security Notes
-
-

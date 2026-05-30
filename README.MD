@@ -33,7 +33,7 @@ Verify your AWS identity:
 aws sts get-caller-identity
 ```
 
-mention bucket name for remote backend in "1-s3-backend.tf" if bucker alread exist
+### Mention bucket name for remote backend in "1-s3-backend.tf" if bucker alread exist
 
 ## Configuration Files
 

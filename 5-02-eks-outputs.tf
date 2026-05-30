@@ -26,7 +26,7 @@ output "cluster_version" {
 
 output "cluster_iam_role_name" {
   description = "IAM role name of the EKS cluster."
-  value       = aws_iam_role.eks_master_role.name 
+  value       = aws_iam_role.eks_master_role.name
 }
 
 output "cluster_iam_role_arn" {
@@ -58,7 +58,7 @@ output "node_group_public_arn" {
 
 output "node_group_public_status" {
   description = "Public Node Group status"
-  value       = aws_eks_node_group.eks_ng_public.status 
+  value       = aws_eks_node_group.eks_ng_public.status
 }
 
 output "node_group_public_version" {
@@ -80,7 +80,7 @@ output "node_group_private_arn" {
 
 output "node_group_private_status" {
   description = "Private Node Group status"
-  value       = aws_eks_node_group.eks_ng_private.status 
+  value       = aws_eks_node_group.eks_ng_private.status
 }
 
 output "node_group_private_version" {
@@ -88,3 +88,17 @@ output "node_group_private_version" {
   value       = aws_eks_node_group.eks_ng_private.version
 }
 
+output "cluster_cloudwatch_log_group_name" {
+  description = "CloudWatch Logs log group name for EKS control plane logs."
+  value       = aws_cloudwatch_log_group.eks_cluster.name
+}
+
+output "cloudwatch_observability_addon_arn" {
+  description = "ARN of the Amazon CloudWatch Observability EKS add-on."
+  value       = aws_eks_addon.cloudwatch_observability.arn
+}
+
+output "container_insights_log_group_names" {
+  description = "CloudWatch Logs log group names used by Container Insights."
+  value       = [for log_group in aws_cloudwatch_log_group.container_insights : log_group.name]
+}

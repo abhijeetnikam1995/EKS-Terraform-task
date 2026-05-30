@@ -13,7 +13,7 @@ variable "cluster_service_ipv4_cidr" {
 
 variable "cluster_version" {
   description = "Kubernetes minor version to use for the EKS cluster (for example 1.21)"
-  type = string
+  type        = string
   default     = null
 }
 variable "cluster_endpoint_private_access" {
@@ -32,6 +32,18 @@ variable "cluster_endpoint_public_access_cidrs" {
   description = "List of CIDR blocks which can access the Amazon EKS public API server endpoint."
   type        = list(string)
   default     = ["0.0.0.0/0"]
+}
+
+variable "cluster_enabled_log_types" {
+  description = "List of EKS control plane log types to send to CloudWatch Logs. Valid values are api, audit, authenticator, controllerManager, and scheduler."
+  type        = list(string)
+  default     = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+}
+
+variable "cluster_log_retention_in_days" {
+  description = "Number of days to retain EKS control plane logs in CloudWatch Logs."
+  type        = number
+  default     = 30
 }
 
 # EKS Node Group Variables
